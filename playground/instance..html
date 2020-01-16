@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        // vue 인스턴스 생성 과 그 인스턴ㄴ스에서 사용할 수 있는 api(기능들)
+        var vm = new Vue({
+            // body 태그 안에서 app이라는 id를 가진 태그를 찾아서 뷰 인스턴스를 붙이겠다는 뜻
+            el: '#app',
+            data: {
+                message: 'hi'
+            },
+            created: function() {
+                
+            },
+        });
+        
+        // var options = {
+        //     // body 태그 안에서 app이라는 id를 가진 태그를 찾아서 뷰 인스턴스를 붙이겠다는 뜻
+        //     el: '#app',
+        //     data: {
+        //         message: 'hi'
+        //     },
+        //     methods: {
+                
+        //     },
+        // };
+
+        // var vm = new Vue(options);
+
+        
+    </script>
+</body>
+</html>
