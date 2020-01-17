@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Axios</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 버튼을 누르면 getData라는 메서드 실행 -->
+    <button v-on:click="getData">get user</button>
+    <div>
+      {{ users }}
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      methods: {
+        getData: function() {
+          // console.log(this); 여기서의 this는 뷰 객체
+          var vm = this;
+          axios.get('https://jsonplaceholder.typicode.com/users/')
+            // 요청 성공시
+            .then(function(response) {
+              // console.log(this); 여기서의 this 는 window 객체
+              console.log(response.data); // console.log(response)만 하면 객체가 날라옴. 그 중 data 속성만 보려면
+              vm.users = response.data; // 10개 배열이 넘어옴
+            })
+            // 요청 실패시 이쪽 아래 실행
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
+      }
+    })
+  </script>
+</body>
+</html>
