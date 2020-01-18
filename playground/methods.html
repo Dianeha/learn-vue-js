@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="logText">CLICK ME</button>
+        <!-- 이벤트 모디파이어 keyup.enter / keyup.esc 등 공식문서에서 확인 가능 -->
+        <input type="text" v-on:keyup.enter="logText" placeholder="write something">
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    new Vue({
+        el:'#app',
+        data: {
+            num: 0,
+        },
+        methods: {
+            logText: function() {
+                console.log('clicked');
+            },
+            minus: function() {
+                this.num = this.num - 1;
+            },
+
+        },
+    })
+    </script>
+</body>
+</html>

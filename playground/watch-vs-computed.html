@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{ num }}</h1>
+        <h1>{{ doubleNum }}</h1>
+        <!-- <h1>{{ message.split('').reverse().join('') }}</h1> -->
+        <p>Original message: "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reverseMessage() }}"</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                num: 10,
+                message: 'Hello'
+            },
+            // validation 담당?
+            // data를 수정하는 것이 아니라 있는 데이터를 가공해 리턴 (getter 함수)
+            // 가능하면 watch말고 computed를 쓰기 < 캐싱되기 때문에? 
+            computed: {
+                doubleNum: function () {
+                    return this.num * 2;
+                },
+                // reversedMessage: function () {
+                //     // `this` points to the vm instance
+                //     return this.message.split('').reverse().join('')
+                // },
+            },
+            watch: {// 데이터 요청에 적합하다.
+                // 데이터가 변하는 것을 추적하는 부분(바뀐 데이터, 기존 데이터 받을 수 있음)
+                // 1. 데이터가 변할때마다
+                num: function (newValue, oldValue) {
+                    this.fetchUserByNumber(newValue);
+                }
+            },
+            // data 가 수정되는 로직 (setter 함수) - 리턴이 없음
+            methods: { // 
+                fetchUserByNumber: function (num) {
+                    // console.log(num);
+                    // 2. 새로운 요청을 보내게 됨
+                    axios.get(num);
+                },
+                reverseMessage: function () {
+                    return this.message.split('').reverse().join('')
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -11,22 +11,25 @@
 <body>
     <div id="app">
         <!-- 데이터 바인딩 -->
-        <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+        <p v-show="loading" v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
         <!-- 2. 여기도 바뀐다 이게 핵심 -->
         <!-- <p id="abc1234">{{ num }}</p> -->
-        <p>{{ doubleNum }}</p>
+        <p v-show="loading">{{ doubleNum }}</p>
 
-        <div v-if="loading">
+        <!-- <div v-if="loading">
             Loading...
         </div>
 
         <div v-else>
             test user has been logged in
-        </div>
+        </div> -->
 
         <div v-show="loading">
             Loading...
         </div>
+
+        <input v-model="message" placeholder="edit me">
+        <p>Now message is {{ message }}</p>
     </div>
 
 
@@ -38,7 +41,8 @@
                 num: 10,
                 uuid: 'abc1234', // 1. 여기를 바꾸면
                 name: 'text-blue', // 'text-blue'라는 문자열을 name 이라는 속성으로 가지고 있다.
-                loading: true,
+                loading: false,
+                message: ''
             },
             computed: {
                 doubleNum: function () {
