@@ -12,6 +12,11 @@
     "core-js": "^3.4.4",
     "vue": "^2.6.10"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-emoji"
+    }
+  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.1.0",
     "@vue/cli-plugin-eslint": "^4.1.0",

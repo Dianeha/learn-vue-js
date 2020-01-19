@@ -15,9 +15,8 @@
       <label for="password">pw: </label>
       <input id="password" type="password" v-model="password">
     </div>
-
     <!-- 버튼 타입이 submit이면 form태그 내의 정보들이 전달됨 -->
-    <button type="submit">login</button>
+    <button type="submit">login!</button>
   </form>
 </template>
 
